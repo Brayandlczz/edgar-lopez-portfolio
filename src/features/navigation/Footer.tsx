@@ -2,6 +2,7 @@
 
 import { motion, useInView, type Variants } from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
 
 const socials = [
   {
@@ -42,17 +43,18 @@ const socials = [
 ];
 
 const fadeUp: Variants = {
-  hidden:  { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 16 },
   visible: (d: number = 0) => ({
-    opacity: 1, y: 0,
+    opacity: 1,
+    y: 0,
     transition: { duration: 0.7, ease: "easeOut", delay: d },
   }),
 };
 
 export default function Footer() {
-  const ref    = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true });
-  const year   = new Date().getFullYear();
+  const year = new Date().getFullYear();
 
   return (
     <footer
@@ -62,51 +64,41 @@ export default function Footer() {
     >
       <div className="space-y-6">
 
-        {/* ── Top: nombre + tagline + badge ── */}
+        {/* Top */}
         <motion.div
-          variants={fadeUp} custom={0} initial="hidden" animate={inView ? "visible" : "hidden"}
+          variants={fadeUp}
+          custom={0}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
           className="space-y-2.5"
         >
-          <p className="font-display text-3xl md:text-3xl text-white leading-none tracking-tight">
+          <p className="font-display text-3xl text-white tracking-tight">
             Edgar López Rodríguez
           </p>
           <p className="f-mono text-[9px] tracking-[0.3em] text-white/30 uppercase">
             Asesor Financiero · Economista · UNAM
           </p>
-
-          {/* Badge de disponibilidad */}
-          <motion.div
-            variants={fadeUp} custom={0.15} initial="hidden" animate={inView ? "visible" : "hidden"}
-            className="inline-flex items-center gap-2.5 border border-white/8 px-3.5 py-2 mt-1"
-            role="status"
-            aria-label="Estado: disponible para nuevos clientes"
-          >
-            <span className="relative flex h-1.5 w-1.5 shrink-0" aria-hidden>
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
-            </span>
-            <span className="f-mono text-[9px] tracking-wide text-white/35">
-              Disponible para hacer crecer tu patrimonio
-            </span>
-          </motion.div>
         </motion.div>
 
-        {/* ── Divider ── */}
+        {/* Divider */}
         <motion.div
-          initial={{ scaleX: 0 }} animate={inView ? { scaleX: 1 } : {}}
-          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] as const, delay: 0.2 }}
+          initial={{ scaleX: 0 }}
+          animate={inView ? { scaleX: 1 } : {}}
+          transition={{ duration: 1 }}
           className="h-px bg-white/8 origin-left"
-          aria-hidden
         />
 
-        {/* ── Bottom: socials + legal ── */}
+        {/* Bottom */}
         <motion.div
-          variants={fadeUp} custom={0.3} initial="hidden" animate={inView ? "visible" : "hidden"}
-          className="flex flex-col md:flex-row items-start md:items-center justify-between gap-5"
+          variants={fadeUp}
+          custom={0.3}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          className="flex flex-col md:flex-row justify-between items-start md:items-center gap-5"
         >
-          {/* Redes sociales */}
-          <nav aria-label="Redes sociales de Edgar López Rodríguez">
-            <ul className="flex items-center gap-5 list-none">
+          {/* Socials */}
+          <nav aria-label="Redes sociales">
+            <ul className="flex gap-5">
               {socials.map((s) => (
                 <li key={s.name}>
                   <a
@@ -114,7 +106,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.label}
-                    className="text-white/25 hover:text-white transition-colors duration-200 block"
+                    className="text-white/25 hover:text-white transition"
                   >
                     {s.icon}
                   </a>
@@ -124,20 +116,20 @@ export default function Footer() {
           </nav>
 
           {/* Legal */}
-          <div className="flex flex-wrap items-center gap-2 md:gap-5" role="contentinfo">
-            <span className="f-mono text-[9px] tracking-widest text-white/40 uppercase">
-              © {year} | TODOS LOS DERECHOS RESERVADOS
-            </span>
-            <span className="text-white/40" aria-hidden>·</span>
-            <a href="/components/terminos"
-              className="f-mono text-[9px] tracking-widest text-white/40 uppercase hover:text-white/45 transition-colors duration-200">
+          <div className="flex flex-wrap items-center gap-3 text-white/40 text-[9px] tracking-widest uppercase">
+            <span>© {year} Todos los derechos reservados</span>
+
+            <span aria-hidden>·</span>
+
+            <Link href="/terminos" className="hover:text-white transition">
               Términos y Condiciones
-            </a>
-            <span className="text-white/40" aria-hidden>·</span>
-            <a href="/components/privacidad"
-              className="f-mono text-[9px] tracking-widest text-white/40 uppercase hover:text-white/45 transition-colors duration-200">
+            </Link>
+
+            <span aria-hidden>·</span>
+
+            <Link href="/privacidad" className="hover:text-white transition">
               Políticas de Privacidad
-            </a>
+            </Link>
           </div>
         </motion.div>
 
