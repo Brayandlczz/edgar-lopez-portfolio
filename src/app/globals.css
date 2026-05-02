@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-family-display: 'Cormorant Garamond', serif;
+  --font-family-mono: 'JetBrains Mono', monospace;
+  --font-family-sans: 'Inter', sans-serif;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: #080808;
+    color: #f0f0f0;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: #f0f0f0;
+    color: #080808;
+  }
+
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: #080808; }
+  ::-webkit-scrollbar-thumb { background: #2a2a2a; }
+}
+
+@layer utilities {
+  .f-display { font-family: 'Cormorant Garamond', serif; }
+  .f-mono    { font-family: 'JetBrains Mono', monospace; }
+}
