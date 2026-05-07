@@ -32,7 +32,7 @@ const socials = [
   {
     name: "WhatsApp",
     href: "https://wa.me/5215521180067",
-    label: "Contactar a Edgar López por WhatsApp",
+    label: "Contactar a Edgar López Rodríguez por WhatsApp",
     icon: (
       <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
@@ -43,62 +43,75 @@ const socials = [
 ];
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 16 },
+  hidden:  { opacity: 0, y: 16 },
   visible: (d: number = 0) => ({
-    opacity: 1,
-    y: 0,
+    opacity: 1, y: 0,
     transition: { duration: 0.7, ease: "easeOut", delay: d },
   }),
 };
 
 export default function Footer() {
-  const ref = useRef<HTMLElement>(null);
+  const ref    = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true });
-  const year = new Date().getFullYear();
+  const year   = new Date().getFullYear();
 
   return (
     <footer
       ref={ref}
-      aria-label="Pie de página — Edgar López Rodríguez"
+      aria-label="Pie de página — Edgar López Rodríguez, asesor financiero"
       className="w-full bg-[#080808] border-t border-white/5 px-8 md:px-16 pt-12 pb-8"
     >
       <div className="space-y-6">
 
-        {/* Top */}
+        {/* ── Top: nombre + tagline + badge ── */}
         <motion.div
-          variants={fadeUp}
-          custom={0}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="space-y-2.5"
+          variants={fadeUp} custom={0}
+          initial="hidden" animate={inView ? "visible" : "hidden"}
+          className="space-y-3"
         >
-          <p className="font-display text-3xl text-white tracking-tight">
+          <p className="font-display text-3xl md:text-4xl text-white leading-none tracking-tight">
             Edgar López Rodríguez
           </p>
-          <p className="f-mono text-[9px] tracking-[0.3em] text-white/30 uppercase">
+          <p className="f-mono text-[9px] tracking-[0.3em] text-white/40 uppercase">
             Asesor Financiero · Economista · UNAM
           </p>
+
+          {/* Badge de disponibilidad */}
+          <motion.div
+            variants={fadeUp} custom={0.15}
+            initial="hidden" animate={inView ? "visible" : "hidden"}
+            role="status"
+            aria-label="Estado de disponibilidad: disponible para nuevos clientes"
+            className="inline-flex items-center gap-2.5 border border-white/8 px-3.5 py-2 mt-1"
+          >
+            {/* Punto verde latente */}
+            <span className="relative flex h-1.5 w-1.5 shrink-0" aria-hidden>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+            </span>
+            <span className="f-mono text-[9px] tracking-wide text-white/60">
+              Disponible para hacer crecer tu patrimonio juntos
+            </span>
+          </motion.div>
         </motion.div>
 
-        {/* Divider */}
+        {/* ── Divider ── */}
         <motion.div
-          initial={{ scaleX: 0 }}
-          animate={inView ? { scaleX: 1 } : {}}
-          transition={{ duration: 1 }}
+          initial={{ scaleX: 0 }} animate={inView ? { scaleX: 1 } : {}}
+          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] as const, delay: 0.2 }}
           className="h-px bg-white/8 origin-left"
+          aria-hidden
         />
 
-        {/* Bottom */}
+        {/* ── Bottom: socials + legal ── */}
         <motion.div
-          variants={fadeUp}
-          custom={0.3}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          variants={fadeUp} custom={0.3}
+          initial="hidden" animate={inView ? "visible" : "hidden"}
           className="flex flex-col md:flex-row justify-between items-start md:items-center gap-5"
         >
-          {/* Socials */}
-          <nav aria-label="Redes sociales">
-            <ul className="flex gap-5">
+          {/* Redes sociales */}
+          <nav aria-label="Redes sociales de Edgar López Rodríguez">
+            <ul className="flex items-center gap-5 list-none">
               {socials.map((s) => (
                 <li key={s.name}>
                   <a
@@ -106,7 +119,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.label}
-                    className="text-white/25 hover:text-white transition"
+                    className="text-white/25 hover:text-white transition-colors duration-200 block"
                   >
                     {s.icon}
                   </a>
@@ -116,18 +129,17 @@ export default function Footer() {
           </nav>
 
           {/* Legal */}
-          <div className="flex flex-wrap items-center gap-3 text-white/40 text-[9px] tracking-widest uppercase">
-            <span>© {year} Todos los derechos reservados</span>
-
+          <div
+            role="contentinfo"
+            className="flex flex-wrap items-center gap-2 md:gap-4 f-mono text-[9px] tracking-widest uppercase text-white/80"
+          >
+            <span>© {year} | Edgar López Rodríguez</span>
             <span aria-hidden>·</span>
-
-            <Link href="/terminos" className="hover:text-white transition">
+            <Link href="/terminos" className="hover:text-white/50 transition-colors duration-200">
               Términos y Condiciones
             </Link>
-
             <span aria-hidden>·</span>
-
-            <Link href="/privacidad" className="hover:text-white transition">
+            <Link href="/privacidad" className="hover:text-white/50 transition-colors duration-200">
               Políticas de Privacidad
             </Link>
           </div>
