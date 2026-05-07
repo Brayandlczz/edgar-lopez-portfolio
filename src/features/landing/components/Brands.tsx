@@ -10,12 +10,12 @@ type Brand = {
 };
 
 const brands: Brand[] = [
-  { name: "Allianz México", src: "/logos/allianz.png" },
-  { name: "BIVA", src: "/logos/biva.png" },
-  { name: "UNAM", src: "/logos/unam.png" },
-  { name: "CNSF", src: "/logos/cnsf.png" },
-  { name: "AMIB", src: "/logos/amib.png" },
-  { name: "Actinver", src: "/logos/actinver.png" },
+  { name: "Allianz México", src: "/logos/allianz.webp" },
+  { name: "BIVA", src: "/logos/biva.webp" },
+  { name: "UNAM", src: "/logos/unam.webp" },
+  { name: "CNSF", src: "/logos/cnsf.webp" },
+  { name: "AMIB", src: "/logos/amib.webp" },
+  { name: "Actinver", src: "/logos/actinver.webp" },
 ];
 
 const marqueeRow = [...brands, ...brands];
