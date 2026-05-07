@@ -49,7 +49,7 @@ export default function ContactSection() {
           <motion.p
             initial={{ opacity: 0, y: 12 }} animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="f-mono text-[10px] tracking-[0.35em] text-white/25 uppercase mb-3"
+            className="f-mono text-[10px] tracking-[0.35em] text-white/45 uppercase mb-3"
           >
             Contacto
           </motion.p>
@@ -110,7 +110,7 @@ export default function ContactSection() {
             </div>
 
             {/* Nota de privacidad */}
-            <p className="f-mono text-[9px] text-white/15 leading-relaxed max-w-xs">
+            <p className="f-mono text-[9px] text-white/30 leading-relaxed max-w-xs">
               Tu información es confidencial y nunca será compartida con terceros.
             </p>
           </motion.div>
@@ -141,7 +141,7 @@ export default function ContactSection() {
               >
                 {/* Nombre */}
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="contact-name" className="f-mono text-[9px] tracking-widest uppercase text-white/25">
+                  <label htmlFor="contact-name" className="f-mono text-[9px] tracking-widest uppercase text-white/50">
                     Nombre
                   </label>
                   <input
@@ -153,7 +153,7 @@ export default function ContactSection() {
                     placeholder="Tu nombre completo"
                     onFocus={() => setFocused("name")}
                     onBlur={() => setFocused(null)}
-                    className={`w-full bg-transparent border-b pb-2.5 text-sm text-white outline-none placeholder:text-white/12 transition-colors duration-300 ${
+                    className={`w-full bg-transparent border-b pb-2.5 text-sm text-white outline-none placeholder:text-white/20 transition-colors duration-300 ${
                       focused === "name" ? "border-white/40" : "border-white/10"
                     }`}
                   />
@@ -161,7 +161,7 @@ export default function ContactSection() {
 
                 {/* Correo */}
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="contact-email" className="f-mono text-[9px] tracking-widest uppercase text-white/25">
+                  <label htmlFor="contact-email" className="f-mono text-[9px] tracking-widest uppercase text-white/50">
                     Correo
                   </label>
                   <input
@@ -173,7 +173,7 @@ export default function ContactSection() {
                     placeholder="tu@correo.com"
                     onFocus={() => setFocused("email")}
                     onBlur={() => setFocused(null)}
-                    className={`w-full bg-transparent border-b pb-2.5 text-sm text-white outline-none placeholder:text-white/12 transition-colors duration-300 ${
+                    className={`w-full bg-transparent border-b pb-2.5 text-sm text-white outline-none placeholder:text-white/20 transition-colors duration-300 ${
                       focused === "email" ? "border-white/40" : "border-white/10"
                     }`}
                   />
@@ -181,7 +181,7 @@ export default function ContactSection() {
 
                 {/* Mensaje */}
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="contact-message" className="f-mono text-[9px] tracking-widests uppercase text-white/25">
+                  <label htmlFor="contact-message" className="f-mono text-[9px] tracking-widest uppercase text-white/50">
                     Mensaje
                   </label>
                   <textarea
@@ -192,7 +192,7 @@ export default function ContactSection() {
                     placeholder="Cuéntame sobre tus objetivos financieros..."
                     onFocus={() => setFocused("msg")}
                     onBlur={() => setFocused(null)}
-                    className={`w-full bg-transparent border-b pb-2.5 text-sm text-white outline-none resize-none placeholder:text-white/12 transition-colors duration-300 ${
+                    className={`w-full bg-transparent border-b pb-2.5 text-sm text-white outline-none resize-none placeholder:text-white/20 transition-colors duration-300 ${
                       focused === "msg" ? "border-white/40" : "border-white/10"
                     }`}
                   />

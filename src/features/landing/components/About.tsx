@@ -48,7 +48,7 @@ export default function AboutSection() {
       {/* Label — salto */}
       <motion.p
         variants={jumpIn} custom={0} initial="hidden" animate={inView ? "visible" : "hidden"}
-        className="f-mono text-[10px] tracking-[0.35em] text-white/50 uppercase mb-12"
+        className="f-mono text-[10px] tracking-[0.35em] text-white/60 uppercase mb-12"
       >
         Sobre mí
       </motion.p>
@@ -96,7 +96,7 @@ export default function AboutSection() {
             variants={fadeUp} custom={0.32} initial="hidden" animate={inView ? "visible" : "hidden"}
             className="pt-3"
           >
-            <p className="f-mono text-[9px] tracking-[0.3em] text-white/20 uppercase mb-4">
+            <p className="f-mono text-[9px] tracking-[0.3em] text-white/80 uppercase mb-4">
               Certificaciones &amp; formación
             </p>
             <div className="flex flex-wrap gap-2">
@@ -108,7 +108,7 @@ export default function AboutSection() {
                   <span className="text-white/70 text-xs group-hover:text-white transition-colors duration-200 leading-none mb-1">
                     {c.label}
                   </span>
-                  <span className="f-mono text-[8px] tracking-widest text-white/25 uppercase">
+                  <span className="f-mono text-[8px] tracking-widest text-white/50 uppercase">
                     {c.desc}
                   </span>
                 </div>
@@ -134,7 +134,7 @@ export default function AboutSection() {
                 className="group border border-white/5 p-6 hover:border-white/15 hover:bg-white/[0.02] transition-all duration-300 cursor-default"
               >
                 <div className="flex gap-5">
-                  <span className="f-mono text-[10px] text-white/15 pt-0.5 select-none">{p.n}</span>
+                  <span className="f-mono text-[10px] text-white/45 pt-0.5 select-none">{p.n}</span>
                   <div>
                     <h3 className="text-white/75 text-sm font-medium mb-2 group-hover:text-white transition-colors duration-200">
                       {p.t}

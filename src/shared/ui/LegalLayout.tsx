@@ -32,9 +32,9 @@ export default function LegalLayout({
           <span className="font-display text-base text-white tracking-tight group-hover:text-white/60 transition-colors duration-200">
             Edgar López Rodríguez
           </span>
-          <span className="f-mono text-[9px] tracking-[0.3em] text-white/30 uppercase">Asesor Financiero</span>
+          <span className="f-mono text-[9px] tracking-[0.3em] text-white/60 uppercase">Asesor Financiero</span>
         </Link>
-        <Link href="/" className="f-mono text-[10px] tracking-widest uppercase text-white/30 hover:text-white transition-colors duration-200">
+        <Link href="/" className="f-mono text-[10px] tracking-widest uppercase text-white/60 hover:text-white transition-colors duration-200">
           ← Inicio
         </Link>
       </header>
@@ -49,13 +49,13 @@ export default function LegalLayout({
             <h2 className="font-display text-2xl text-white leading-tight">{title}</h2>
             <div className="space-y-3 pt-2 border-t border-white/5">
               <div>
-                <span className="f-mono text-[8px] tracking-widest text-white/15 uppercase block mb-0.5">Actualización</span>
-                <time className="f-mono text-[9px] text-white/35" dateTime={dateISO}>{lastUpdated}</time>
+                <span className="f-mono text-[8px] tracking-widest text-white/70 uppercase block mb-0.5">Actualización</span>
+                <time className="f-mono text-[9px] text-white/60" dateTime={dateISO}>{lastUpdated}</time>
               </div>
               {meta.map((m) => (
                 <div key={m.label}>
-                  <span className="f-mono text-[8px] tracking-widest text-white/15 uppercase block mb-0.5">{m.label}</span>
-                  <span className="f-mono text-[9px] text-white/35">{m.value}</span>
+                  <span className="f-mono text-[8px] tracking-widest text-white/70 uppercase block mb-0.5">{m.label}</span>
+                  <span className="f-mono text-[9px] text-white/60">{m.value}</span>
                 </div>
               ))}
             </div>
@@ -63,12 +63,12 @@ export default function LegalLayout({
 
           {/* Índice */}
           <nav aria-label="Índice de secciones">
-            <p className="f-mono text-[8px] tracking-[0.3em] text-white/15 uppercase mb-4">Índice</p>
+            <p className="f-mono text-[8px] tracking-[0.3em] text-white/60 uppercase mb-4">Índice</p>
             <ol className="space-y-1.5">
               {sections.map((s) => (
                 <li key={s.id}>
                   <a href={`#${s.id}`}
-                    className="f-mono text-[9px] tracking-wide text-white/25 hover:text-white/70 transition-colors duration-200 block leading-relaxed">
+                    className="f-mono text-[9px] tracking-wide text-white/55 hover:text-white/90 transition-colors duration-200 block leading-relaxed">
                     {s.title}
                   </a>
                 </li>
@@ -79,11 +79,11 @@ export default function LegalLayout({
           {/* Footer sidebar */}
           <div className="mt-auto pt-8 border-t border-white/5 space-y-2">
             <Link href={footerLink.href}
-              className="f-mono text-[9px] tracking-widest uppercase text-white/20 hover:text-white/50 transition-colors duration-200 block">
+              className="f-mono text-[9px] tracking-widest uppercase text-white/80 hover:text-white transition-colors duration-200 block">
               {footerLink.label} →
             </Link>
-            <p className="f-mono text-[8px] text-white/12 tracking-wide">
-              © {new Date().getFullYear()} Edgar López Rodríguez
+            <p className="f-mono text-[8px] text-white/50 tracking-wide">
+              © {new Date().getFullYear()} | Edgar López Rodríguez
             </p>
           </div>
         </aside>
@@ -124,7 +124,7 @@ export default function LegalLayout({
             <ol className="space-y-2">
               {sections.map((s) => (
                 <li key={s.id}>
-                  <a href={`#${s.id}`} className="f-mono text-[10px] tracking-wide text-white/35 hover:text-white transition-colors duration-200">
+                  <a href={`#${s.id}`} className="f-mono text-[10px] tracking-wide text-white/40 hover:text-white transition-colors duration-200">
                     {s.title}
                   </a>
                 </li>
@@ -163,7 +163,7 @@ export default function LegalLayout({
           {/* Footer móvil */}
           <footer className="lg:hidden mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <p className="f-mono text-[9px] tracking-wide text-white/20 uppercase">
-              © {new Date().getFullYear()} Edgar López Rodríguez
+              © {new Date().getFullYear()} | Edgar López Rodríguez
             </p>
             <Link href={footerLink.href}
               className="f-mono text-[9px] tracking-widest uppercase text-white/20 hover:text-white/50 transition-colors duration-200">
