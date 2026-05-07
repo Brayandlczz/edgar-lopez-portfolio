@@ -103,7 +103,7 @@ export default function HeroSection() {
         >
           <div className="absolute inset-0 overflow-hidden">
             <Image
-              src="/logos/me.webp"
+              src="/images/me.webp"
               alt="Edgar López Rodríguez, asesor financiero y economista de la UNAM"
               fill
               sizes="30vw"
