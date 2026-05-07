@@ -92,10 +92,12 @@ export default function ExperienceSection() {
         />
       </div>
 
-      {/* Lista cronológica */}
-      <ol className="relative" aria-label="Lista de experiencias profesionales">
-
-        {/* Línea vertical */}
+      {/* Lista cronológica — divide-y directo en ol, sin div wrapper */}
+      <ol
+        className="relative divide-y divide-white/5"
+        aria-label="Lista de experiencias profesionales"
+      >
+        {/* Línea vertical decorativa */}
         <motion.div
           initial={{ scaleY: 0 }} animate={inView ? { scaleY: 1 } : {}}
           transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] as const, delay: 0.4 }}
@@ -103,69 +105,65 @@ export default function ExperienceSection() {
           aria-hidden
         />
 
-        <div className="divide-y divide-white/5">
-          {experiences.map((e, i) => (
-            <motion.li
-              key={`${e.company}-${i}`}
-              variants={slideIn} custom={0.2 + i * 0.09}
-              initial="hidden" animate={inView ? "visible" : "hidden"}
-              className="group relative pl-8 md:pl-16 list-none"
-            >
-              {/* Nodo en línea vertical */}
-              <div
-                aria-hidden
-                className="absolute left-8 md:left-16 top-10 -translate-x-1/2 w-2 h-2 rounded-full border border-white/15 bg-[#080808] group-hover:border-white/50 group-hover:bg-white/10 transition-all duration-300"
-              />
+        {experiences.map((e, i) => (
+          <motion.li
+            key={`${e.company}-${i}`}
+            variants={slideIn} custom={0.2 + i * 0.09}
+            initial="hidden" animate={inView ? "visible" : "hidden"}
+            className="group relative pl-8 md:pl-16"
+          >
+            {/* Nodo en línea vertical */}
+            <div
+              aria-hidden
+              className="absolute left-8 md:left-16 top-10 -translate-x-1/2 w-2 h-2 rounded-full border border-white/15 bg-[#080808] group-hover:border-white/50 group-hover:bg-white/10 transition-all duration-300"
+            />
 
-              {/* Acento izquierdo al hover */}
-              <div
-                aria-hidden
-                className="absolute left-0 top-0 bottom-0 w-px bg-white/30 scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-              />
+            {/* Acento izquierdo al hover */}
+            <div
+              aria-hidden
+              className="absolute left-0 top-0 bottom-0 w-px bg-white/30 scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+            />
 
-              <div className="pl-10 md:pl-16 pr-8 md:pr-16 py-10 grid md:grid-cols-[1fr_2fr_1fr] gap-6 md:gap-12 items-start">
+            <div className="pl-10 md:pl-16 pr-8 md:pr-16 py-10 grid md:grid-cols-[1fr_2fr_1fr] gap-6 md:gap-12 items-start">
 
-                {/* Col 1: índice + periodo + empresa */}
-                <div className="flex md:flex-col gap-4 md:gap-2">
-                  <span
-                    aria-hidden
-                    className="font-display text-[3.5rem] leading-none text-white/25 select-none hidden md:block group-hover:text-white/15 transition-colors duration-500"
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <p className="f-mono text-[9px] tracking-widest text-white/30 uppercase mb-1.5">
-                      <time dateTime={e.dateTime}>{e.period}</time>
-                    </p>
-                    <p className="f-mono text-[11px] tracking-widest text-white/50 uppercase">{e.company}</p>
-                  </div>
-                </div>
-
-                {/* Col 2: rol + descripción */}
-                <div className="flex flex-col gap-3">
-                  <h3 className="font-display text-[clamp(1.3rem,2.2vw,1.9rem)] text-white leading-tight tracking-[-0.01em]">
-                    {e.role}
-                  </h3>
-                  <p className="text-white/35 text-sm leading-[1.85] text-justify group-hover:text-white/50 transition-colors duration-300">
-                    {e.desc}
-                  </p>
-                </div>
-
-                {/* Col 3: tags */}
-                <div className="flex flex-wrap md:flex-col gap-2">
-                  {e.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="f-mono text-[9px] tracking-wide border border-white/8 text-white/30 px-2.5 py-1 group-hover:border-white/20 group-hover:text-white/45 transition-all duration-300 w-fit"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
+              {/* Col 1: índice + periodo + empresa */}
+              <div className="flex md:flex-col gap-4 md:gap-2">
+                <span
+                  aria-hidden
+                  className="font-display text-[3.5rem] leading-none text-white/25 select-none hidden md:block group-hover:text-white/15 transition-colors duration-500"
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <p className="f-mono text-[9px] tracking-widest text-white/30 uppercase mb-1.5">
+                  <time dateTime={e.dateTime}>{e.period}</time>
+                </p>
+                <p className="f-mono text-[11px] tracking-widest text-white/50 uppercase">{e.company}</p>
               </div>
-            </motion.li>
-          ))}
-        </div>
+
+              {/* Col 2: rol + descripción */}
+              <div className="flex flex-col gap-3">
+                <h3 className="font-display text-[clamp(1.3rem,2.2vw,1.9rem)] text-white leading-tight tracking-[-0.01em]">
+                  {e.role}
+                </h3>
+                <p className="text-white/55 text-sm leading-[1.85] text-justify group-hover:text-white/70 transition-colors duration-300">
+                  {e.desc}
+                </p>
+              </div>
+
+              {/* Col 3: tags */}
+              <div className="flex flex-wrap md:flex-col gap-2">
+                {e.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="f-mono text-[9px] tracking-wide border border-white/10 text-white/40 px-2.5 py-1 group-hover:border-white/25 group-hover:text-white/60 transition-all duration-300 w-fit"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.li>
+        ))}
       </ol>
     </section>
   );
