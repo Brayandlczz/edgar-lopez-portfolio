@@ -103,7 +103,7 @@ export default function HeroSection() {
         >
           <div className="absolute inset-0 overflow-hidden">
             <Image
-              src="/logos/me.png"
+              src="/logos/me.webp"
               alt="Edgar López Rodríguez, asesor financiero y economista de la UNAM"
               fill
               sizes="30vw"
@@ -138,7 +138,7 @@ export default function HeroSection() {
           animate={{ y: [0, 5, 0] }}
           transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
           aria-label="Ir a la siguiente sección"
-          className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/30 hover:border-white/40 hover:text-white transition-colors duration-200"
+          className="w-9 h-9 rounded-full border border-white/55 flex items-center justify-center text-white/90 hover:border-white/40 hover:text-white transition-colors duration-200"
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             <path d="M2.5 5.5l4.5 4.5 4.5-4.5" />
