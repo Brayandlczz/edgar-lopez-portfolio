@@ -106,7 +106,9 @@ export default function HeroSection() {
               src="/images/me.webp"
               alt="Edgar López Rodríguez, asesor financiero y economista de la UNAM"
               fill
-              sizes="30vw"
+              loading="eager"
+              fetchPriority="high"
+              sizes="(max-width: 768px) 0vw, 50vw"
               className="object-cover object-top grayscale"
               priority
             />
